@@ -1,0 +1,97 @@
+--------------Подготовка
+--создание директории для резервной копии
+--открытие командной строки с правами администратора
+--Остановка всех служб oracle 12c
+	net stop OracleServiceORCL
+--Проверяем состояние нашей базы данных. 
+	select name, open_mode, database_role from v$database;
+	archive log list
+	exit
+--------Если журналы архивов не создаются то:
+		SHUTDOWN IMMEDIATE;
+		STARTUP MOUNT;
+		ALTER DATABASE ARCHIVELOG;
+		ALTER DATABASE OPEN;
+--------------Создание резервной копии
+--Перейдем в RMAN и создадим сжатую резервную копию с журналом архивов в созданной директории.
+run
+{
+allocate channel ch1 device type disk;
+allocate channel ch2 device type disk;
+crosscheck archivelog all;
+backup as compressed backupset database format 'D:\rman_backup\Fullback_%T_%U.dbf'
+plus archivelog format 'D:\rman_backup\Archive_%T_%U.arc';
+backup current controlfile format 'D:\rman_backup\Controlback_%T_%U.ctl';
+release channel ch1;
+release channel ch2;
+}
+	exit
+--Проверяем успешность завершения резервного копирования.
+	sqlplus / as sysdba
+
+	col STATUS format a10
+	col hrs format 999.99
+
+	select SESSION_KEY, INPUT_TYPE, STATUS,to_char(START_TIME,'mm/dd/yy hh24:mi') start_time, to_char(END_TIME,'mm/dd/yy hh24:mi') end_time, elapsed_seconds/3600 hrs from V$RMAN_BACKUP_JOB_DETAILS order by session_key;
+--Создаем копию файла spfileCOFFE.ora
+--Проверяем базу данных
+	select name from v$database;
+--Останавливаем и закрываем базу данных
+	shut immediate;
+	startup mount exclusive restrict;
+	select name, open_mode, database_role from v$database;
+--------------------Удаляем базу данных
+	drop database;
+	exit
+---------------------Востанавливаем базу данных
+--делаем из spfileCOFFE.ora_bkp файла файл spfileCOFFE.ora
+--запуска экземпляра базы данных Oracle без монтирования базы данных. Это означает, что экземпляр 
+базы данных запускается и инициализируется, но управление файлами управления не загружается 
+и база данных не монтируется.
+	sqlplus / as sysdba
+	startup nomount;
+	exit
+--переходим в RMAN
+--– Восстанавливаем базу данных
+	restore controlfile from 'D:\rman_backup\CONTROLBACK_20230514_181S51QL_1_1.CTL';
+	   --имя файла берем из папки бэкапа
+
+–- монтирования базы данных. Это означает, что управление файлами управления базы данных 
+загружается в память и проверяется на наличие ошибок. 
+	alter database mount;
+
+----сообщает RMAN, чтобы он сканировал каталог /u02/backup/ и добавлял информацию обо всех 
+найденных там резервных копиях и архивных журналах.
+	catalog start with 'D:\rman_backup\';
+
+--восстановления базы данных из резервных копий
+--1.Выделяет два канала (ch1 и ch2) для записи на диск.
+--2.Восстанавливает базу данных из резервных копий с помощью команды RESTORE DATABASE.
+--3.Переключает все файлы данных и временные файлы на восстановленные версии с помощью команд SWITCH DATAFILE ALL и SWITCH TEMPFILE ALL.
+--4.Освобождает выделенные каналы.
+run
+{
+allocate channel ch1 device type disk;
+allocate channel ch2 device type disk;
+restore database; switch datafile all;
+switch tempfile all;
+release channel ch1;
+release channel ch2;
+}
+
+--восстановления базы данных из резервных копий и архивных журналов. Эта команда применяет все 
+необходимые изменения из архивных журналов к резервным копиям данных, чтобы восстановить 
+базу данных до состояния на момент сбоя или до указанного времени
+	recover database;
+
+--открытия базы данных после восстановления и сброса журналов повторного выполнения. Эта команда 
+создает новый набор журналов повторного выполнения и сбрасывает их последовательность. 
+Это необходимо после восстановления базы данных из резервной копии или после выполнения операции 
+RECOVER, чтобы гарантировать, что все изменения, внесенные в базу данных после момента 
+резервного копирования, были отменены.
+	alter database open RESETLOGS;
+	exit
+
+---Проверяем работоспособность бд
+	sqlplus / as sysdba
+	select name, open_mode, database_role from v$database;

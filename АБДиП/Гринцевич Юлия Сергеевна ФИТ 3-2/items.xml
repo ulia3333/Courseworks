@@ -1,0 +1,17 @@
+<data>
+  <row>
+    <NAME>Item 1</NAME>
+    <COST>10.50</COST>
+    <ISDELETED>0</ISDELETED>
+  </row>
+  <row>
+    <NAME>Item 2</NAME>
+    <COST>20.00</COST>
+    <ISDELETED>1</ISDELETED>
+  </row>
+  <row>
+    <NAME>Item 3</NAME>
+    <COST>5.99</COST>
+    <ISDELETED>0</ISDELETED>
+  </row>
+</data>
