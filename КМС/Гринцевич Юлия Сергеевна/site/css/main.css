@@ -1,0 +1,106 @@
+﻿/*оформление диалогового модуля*/
+.dialog{
+	position:fixed;
+	top:50%;
+	left:100%;
+	width:400px;
+	height:430px;
+	margin-left:-25px;
+	margin-top:-215px;
+	padding-left:15px;
+	border:#000 2px solid;
+	border-radius:10px;
+	color:#000;
+	z-index:1500;
+	font-size:12pt;
+	align-content: center;
+    display: grid;
+    margin-left: -400px;
+	background: rgba(255,255,255,0.5);
+}
+
+.button1{
+    border: none;
+    background: rgb(201, 12, 49);
+    border-radius: 5px;
+    padding: 20px;
+    font-weight: 200;
+    font-size: 15px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    color: #e0e0e0;
+    margin-top: 20px;
+}
+
+
+.dialog audio{
+	width: 100%;
+    height: 20px;
+    margin-top: 5px;
+}
+.dialog .label{
+	position: absolute;
+    transform: rotate(270deg);
+    width: 420px;
+    height: 35px;
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: -45%;
+    margin-top: 45%;
+    cursor: pointer;
+}
+
+.dialog .header{
+	display:none;
+	text-align:center;
+	margin-top:-200px;
+}
+
+.dialog .history{
+	height: 300px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	overflow-y:scroll;
+}
+.dialog .history{
+	margin:2px 25px;
+	width:85%;
+	font-style: 14px;
+}
+.dialog input, .dialog button {
+	margin:2px 25px;
+	width:85%;
+}
+
+
+input#Qdialog {
+    padding: 10px;
+}
+
+.dialog .input{
+	height: 30px;
+}
+.dialog .history .question, .dialog .history .answer{
+	margin:5px;
+	border-radius: 5px;
+	padding:5px;
+}
+.dialog .history .question{
+	margin-left:40px;
+	background: rgb(201, 12, 49);
+	
+	color: #e0e0e0;
+}
+
+.dialog .history .answer {
+	margin-right: 40px;
+	background: #dadada;
+	padding: 10px;
+}
+/*оформление картинок в диалоге*/
+.dialog .history .answer img,.dialog .history .answer embed{
+	display: block;
+	max-width: 100%;
+}

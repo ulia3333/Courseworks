@@ -1,0 +1,234 @@
+.header {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-align: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 99
+}
+
+.header-block {
+    max-width: 1050px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: #E5E5E5;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #fddb3a;
+}
+
+.name {
+    color: #E5E5E5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    left: 0px;
+}
+
+.m-menu {
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 12px;
+}
+
+.m-menu .line,
+.m-menu .line2,
+.m-menu .line3 {
+    width: 32px;
+    height: 1px;
+    background-color: #fff;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    color: #E5E5E5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    right: 0px;
+}
+
+.navigation-panel {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.navigation-link {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 12px;
+}
+
+.navigation-link:hover {
+    color: #fddb3a;
+}
+
+.icons-panel {
+    display: flex;
+    align-items: center;
+}
+
+.icon-link {
+    margin-left: 17px;
+    display: flex;
+    align-items: center;
+}
+
+.header-icon {
+    fill: #E5E5E5;
+}
+
+.header-icon:hover {
+    fill: #fddb3a;
+}
+
+.menu-sitebar {
+    display: none;
+    margin-top: -25px;
+    width: 50px;
+    margin-right: 12px;
+}
+
+#active {
+    text-decoration: underline;
+}
+
+@media (max-width: 1250px) {
+    .container {
+        justify-content: flex-start;
+        width: 95%;
+        margin-top: 50px;
+    }
+    .header-block {
+        width: 95%;
+    }
+    .about {
+        max-width: 1200px;
+        margin-top: 20vh;
+        margin-bottom: 20vh;
+    }
+}
+
+@media (max-width: 840px) {
+    .title {
+        margin-bottom: 10px;
+    }
+    h2.title-text {
+        margin: 0;
+    }
+    a.title-text {
+        margin-top: 10px;
+    }
+    .button {
+        margin-top: 10px;
+        padding: 12px 21px;
+    }
+    .name {
+        margin: 10px;
+    }
+    .navigation-panel {
+        display: none;
+    }
+    .ass-description {
+        text-align: revert;
+        width: auto;
+    }
+    .about-us {
+        max-width: 650px;
+        padding-left: 1px;
+        display: grid;
+    }
+    .about {
+        margin: 20px;
+    }
+    .assortment-in-cafe {
+        display: list-item;
+        padding-top: 20px;
+        max-width: 100%;
+        margin: auto;
+        display: block;
+        justify-content: space-around;
+    }
+    .ass {
+        display: contents;
+        margin: auto;
+    }
+    .ass-description {
+        margin-left: 0;
+    }
+    .ass-img {
+        height: 250px;
+        width: 250px;
+    }
+    .nav-group {
+        margin-top: 35px;
+        display: grid;
+    }
+    .navigation-link {
+        margin-top: 12px;
+    }
+    .menu-sitebar {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 25px;
+        width: 100%;
+        max-width: 170px;
+        padding-top: 25px;
+        height: 100%;
+        padding-left: 2%;
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: translateX(-100%);
+        transition: transform 0.2s;
+    }
+    .menu-sitebar.active {
+        transform: translateX(0%);
+    }
+    .m-menu {
+        display: flex;
+    }
+    .footer-block {
+        display: flow-root;
+    }
+}
+
+@media (max-width: 620px) {
+    .container {
+        display: block;
+        margin-top: 10px;
+    }
+    .autor {
+        display: none;
+    }
+}

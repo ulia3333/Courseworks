@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    background-color: rgb(143, 143, 143);
+    background-image: url(../img/home_page.jpg);
+    background-position: center;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.container {
+    margin: auto;
+    background: #ffffffd3;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+@media (max-width: 1250px) {
+    .container {
+        justify-content: flex-start;
+        width: 95%;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 620px) {
+    .container {
+        display: block;
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css\structure.css" rel="stylesheet" type=text/css>
+    <link href="css\style.css" rel="stylesheet" type=text/css>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="js\карта_установки.js"></script>
+    <script src="js\map.js"></script>
+    <script>
+    </script>
+    <!-- База знаний -->
+    <script src="js\jquery-3.6.3.js"></script>
+    <script src="js\dialog.js"></script>
+    <link href="css\main.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body onload="init();" style="margin:20px;">
+    <header class="header">
+        <!-- Logo -->
+        <a href="home.html" class="logo">ОПРЕДЕЛЕНИЕ ПОКАЗАТЕЛЯ ПРЕЛОМЛЕНИЯ ЖИДКОСТЕЙ С ПОМОЩЬЮ РЕФРАКТОМЕТРА</a>
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <!-- Menu -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="theory.html">Теоретические сведения</a></li>
+                <li><a href="structure.html" id="active">Структура установки</a> </li>
+                <li><a href="simulator.html">Симулятор установки</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="theory">
+            <div class="assortment-title">
+                <h3>Фотогалерея установки</h3>
+            </div>
+            <div class="theory-block">
+            </div>
+            <div class="container_slider_css">
+                <img class='photo_slider_css' src="img/refaktometr1.png" alt="" />
+                <img class='photo_slider_css' src="img/refaktometr2.png" alt="" />
+                <img class='photo_slider_css' src="img/refaktometr3.png" alt="" />
+            </div>
+
+            <div class="theory-block">
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <br> В качестве лабораторной установки используется рефрактометр ИРФ-454 Б2М
+
+                <p><img src="img/refaktometr4.png" id="r1" width="400" height="400" /> </p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">1. металлический корпус</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">2. маховик для перемещения изображения границы света и тени</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">3. маховик компенсатора для устранения окрашенности границы света и тени</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">4. окуляр</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">5. рефрактометрический блок</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">6. оправа подвижной осветительной призмы</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">7. оправа неподвижной измерительной призмы</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">8. застежка</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr4.png'">9. рукоятка для поворота осветительной призмы</p>
+                <p onmousedown="document.getElementById('r1').src='img/refaktometr1.png'">10. зеркало</p>
+                <h3>Карта установки</h3>
+            </div>
+        </div>
+        <!-- <br><iframe style="margin:-80px 0 0px 35%;" width="52%" height="240px" src='карта\карта_установки.html' frameborder='0'></iframe> -->
+
+        <div>
+            <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:50vw; margin:-60px 0 20px 35%;">
+                <canvas id="canvas" width="990" height="634" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:990px; height:634px; position: absolute; left: 0px; top: 0px; display: block;">
+                </div>
+            </div>
+        </div>
+        <div class="theory-block">
+            <h1 align="center">Видео установки</h1>
+
+            <br><iframe style="margin:0px 0 0px 25%;" width="52%" height="540px" src='видео\видео_HTML5 Canvas.html' frameborder='0'></iframe>
+            <!-- <div id="animation_container_v" style="background-color:rgba(255, 255, 255, 1.00); width:60%;">
+                <canvas id="canvas" width="640" height="480" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00); margin:0 20%;"></canvas>
+                <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:480px; position: absolute; left: 0px; top: 0px; display: block;">
+                </div>
+            </div> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> -->
+
+        </div>
+    </div>
+</body>
+
+</html>
