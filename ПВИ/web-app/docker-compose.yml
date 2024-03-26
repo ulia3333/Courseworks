@@ -1,0 +1,10 @@
+version: "3"
+services:
+  api:
+    build: ./ithub-bac
+    ports:
+      - "4444:4444"
+  client:
+    build: ./ithub-front
+    ports:
+      - "3000:3000"
